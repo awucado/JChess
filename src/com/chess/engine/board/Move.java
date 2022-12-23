@@ -13,6 +13,10 @@ public abstract class Move {
         this.destinationCoordinate = destinationCoordinate;
     }
 
+    public Piece getMovedPiece() {
+        return this.movedPiece;
+    }
+
     public int getDestinationCoordinate() {
         return this.destinationCoordinate;
     }
@@ -38,7 +42,7 @@ public abstract class Move {
                 builder.setPiece(piece);
             }
             //move the moved piece!
-            builder.setPiece(null);
+            builder.setPiece(this.movedPiece.movePiece(this));
             builder.setMoveMaker(this.board.currentPlayer().getOpponent().getAlliance());
 
             return builder.build();
